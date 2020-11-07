@@ -12,7 +12,6 @@ public class Hooks {
 		System.setProperty( "webdriver.chrome.driver", "./src/test/resources/chromedriver/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://at-sso-ui.herokuapp.com/admin/user");
 	}
 	public static ChromeDriver getDriver() {
 		return driver;

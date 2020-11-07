@@ -5,8 +5,6 @@ import io.cucumber.java.en.Then;
 import com.globalClasses.TestBase;
 import com.globalClasses.MongoDBUtils;
 
-import static org.junit.Assert.assertEquals;
-
 public class GetUsers extends TestBase {
     String allUsers = "";
     @When("I compare mongo with users displayed")
