@@ -4,8 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -44,7 +45,14 @@ public class BasePages {
 			throw new Exception("Impossible select Item: "+element);
 		}
 	}
-
+	public void waitElement(By element) throws Exception {
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, 2);
+			wait.until(ExpectedConditions.visibilityOfElementLocated(element));
+		}catch(Exception e){
+			throw new Exception("Not Found E: "+element);
+		}
+	}
 	public String getItem(By elements) throws Exception {
 	  try {
 		  int counterElements = 0;

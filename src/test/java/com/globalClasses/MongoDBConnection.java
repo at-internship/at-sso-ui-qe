@@ -3,28 +3,18 @@ package com.globalClasses;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Properties;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
-import com.google.gson.JsonObject;
 import org.bson.Document;
-import org.bson.types.ObjectId;
-
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
-import com.mongodb.client.AggregateIterable;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.Aggregates;
-import com.mongodb.client.model.Filters;
 
 
 public class MongoDBConnection {
@@ -36,7 +26,8 @@ public class MongoDBConnection {
         Properties prop = new Properties();
         String propFileName = "config.properties";
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
-
+        Logger mongoLogger = Logger.getLogger( "org.mongodb.driver" );
+        mongoLogger.setLevel(Level.WARNING);
         try {
             if (inputStream != null) {
                 prop.load(inputStream);
