@@ -1,4 +1,4 @@
-@CreateUsersTest
+@Regression
 Feature: Create Users using the SSO Dashboard
 
 	Background: I am in the add new user form

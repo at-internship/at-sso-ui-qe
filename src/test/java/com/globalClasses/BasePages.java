@@ -33,19 +33,11 @@ public class BasePages {
 	public void sendKeys(By element, String key) throws Exception {
 		try {
 			driver.findElement(element).clear();
+			driver.findElement(element).click();
 			driver.findElement(element).sendKeys(key);
 		}catch(Exception e){
 			throw new Exception("Impossible sed keys to "+element);
 		}
-	}
-	public String getText(By element) throws Exception {
-		String text;
-		try {
-			text = driver.findElement(element).getText();
-		}catch(Exception e){
-			throw new Exception("Impossible get text to "+element);
-		}
-		return text;
 	}
 	public void selectItem(By element) throws Exception {
 		try {
