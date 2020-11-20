@@ -1,4 +1,4 @@
-@GetUsersTest
+@Regression
 Feature: Get all the Users using the SSO Dashboard
 	@Get1
 	Scenario: Get all the users
