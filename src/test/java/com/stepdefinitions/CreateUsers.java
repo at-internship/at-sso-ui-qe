@@ -23,7 +23,12 @@ public class CreateUsers extends TestBase{
 	}
 	@Then("I put a valid name")
 	public void i_put_a_valid_name() throws Throwable{
-		base.sendKeys(addNUP.getNameLocator(), values.randomFirstName());
+		String name = values.randomFirstName();
+		String field = "";
+		do {
+		base.sendKeys(addNUP.getNameLocator(), name);
+		field = base.getText(addNUP.getNameLocator());
+		} while(field!=name);
 	}
 	@Given("I put a valid firstname")
 	public void i_put_a_valid_firstname() throws Throwable{
