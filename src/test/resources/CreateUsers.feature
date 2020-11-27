@@ -7,7 +7,7 @@ Feature: Create Users using the SSO Dashboard
 		Then The AddNewUser form should be displayed
 			
 			
-		@HappyPath
+		@POST1
 		Scenario: Create a user correctly
 			Given I put a valid name
 				And I put a valid firstname
