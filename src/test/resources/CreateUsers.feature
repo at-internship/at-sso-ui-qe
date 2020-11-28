@@ -18,3 +18,4 @@ Feature: Create Users using the SSO Dashboard
 			When I do click in the Save button
 			Then I should see an alert of successful user creation
 				And The user should be found by the search function of the page
+				And The user should be found in the DB

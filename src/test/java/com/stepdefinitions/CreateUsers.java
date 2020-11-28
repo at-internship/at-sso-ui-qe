@@ -3,6 +3,8 @@ package com.stepdefinitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
+
+import com.globalClasses.MongoDBUtils;
 import com.globalClasses.TestBase;
 
 public class CreateUsers extends TestBase{
@@ -57,6 +59,11 @@ public class CreateUsers extends TestBase{
 	@Then("The user should be found by the search function of the page")
 	public void the_user_should_be_found_by_the_search_function_of_the_page() throws Throwable{
 		base.sendKeys(userAP.getScearchingBarLocator(), email);
-		base.isDisplayed(userAP.getEmailInTableLocator(email));
+		base.isDisplayed(userAP.getDataInTableLocator(email));
+	}
+	@Then("The user should be found in the DB")
+	public void the_user_should_be_found_in_the_DB() throws Throwable {
+		String id = base.getText(userAP.getDataInTableLocator(email)).toString().substring(0, 24);
+		assert true == MongoDBUtils.existID("TEST", "at-sso-db", "users", id);
 	}
 }

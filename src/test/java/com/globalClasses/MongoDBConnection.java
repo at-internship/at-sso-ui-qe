@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import java.util.logging.Level;
 
 import org.bson.Document;
+import org.bson.types.ObjectId;
 import org.json.JSONObject;
 
 import com.mongodb.MongoClient;
@@ -15,6 +16,7 @@ import com.mongodb.MongoClientURI;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
 
 
 public class MongoDBConnection {
@@ -65,6 +67,23 @@ public class MongoDBConnection {
     private MongoDatabase getDB(String db) {
         return mClient.getDatabase(db);
     }
+    
+    public boolean compareID(String collection, String id) {
+		boolean exist = false;
+		MongoCollection<Document> coll = mDataBase.getCollection(collection);
+		FindIterable<Document> findIterable = coll.find(Filters.eq("_id", new ObjectId(id)));
+		try {
+			for (Document doc : findIterable) {
+				JSONObject mObject = new JSONObject(doc.toJson());
+				String mongoID = mObject.getJSONObject("_id").get("$oid").toString();
+				exist = mongoID.equals(id);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			exist = false;
+		}
+		return exist;
+	}
 
     public boolean compareAllJsonString(String collection, String object) {
 
