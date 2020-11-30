@@ -55,6 +55,15 @@ public class BasePages {
 			throw new Exception("Not Found E: "+element);
 		}
 	}
+	public String getText(By element) throws Exception {
+		String text;
+		try {
+			text = driver.findElement(element).getText();
+		}catch(Exception e){
+			throw new Exception("Impossible get text to "+element);
+		}
+		return text;
+	}
 	public String getItem(By elements) throws Exception {
 	  try {
 		  int counterElements = 0;
