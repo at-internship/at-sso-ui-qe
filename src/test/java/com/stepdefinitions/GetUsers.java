@@ -9,6 +9,7 @@ public class GetUsers extends TestBase {
     String allUsers = "";
     @When("I compare mongo with users displayed")
     public void i_compare_mongo_with_users_displayed() throws Throwable{
+        base.changeEntries(usersAP.getEntries());
         allUsers = base.clickPagination(usersAP.nextPage(), usersAP.getUsers());
     }
 
