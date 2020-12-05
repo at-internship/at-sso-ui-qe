@@ -83,7 +83,17 @@ public class BasePages {
 	  }catch(Exception e){
 		throw new Exception("Impossible select Item: "+e);
 	  }
-	}
+  }
+
+  public void changeEntries(By element) throws Exception {
+		try {
+			Select item = new Select(driver.findElement(element));
+			item.selectByIndex(3);
+		}catch (StaleElementReferenceException e)
+		{
+			throw new Exception("Impossible select Item: "+e);
+		}
+  }
 
 	public String clickPagination(By elements, By users) throws Exception {
 		try {
